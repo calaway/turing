@@ -15,15 +15,16 @@ class SelectTest < Minitest::Test
   def test_pick_odd_numbers
     numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     odds = numbers.select do |number|
-      # Your code goes here
+      number.odd?
     end
     assert_equal [1, 3, 5, 7, 9], odds
   end
 
   def test_pick_words_with_three_letters
-    skip
     words = ["pill", "bad", "finger", "cat", "blue", "dog", "table", "red"]
-    # Your code goes here
+    selected = words.select do |word|
+      word.length == 3
+    end
     assert_equal ["bad", "cat", "dog", "red"], selected
   end
 
@@ -56,9 +57,10 @@ class SelectTest < Minitest::Test
   end
 
   def test_pick_dinosaurs
-    skip
     animals = ["tyrannosaurus", "narwhal", "eel", "achillesaurus", "qingxiusaurus"]
-    # Your code goes here
+    dinosaurs = animals.find_all do |animal|
+      animal.include?("aurus")
+    end
     assert_equal ["tyrannosaurus", "achillesaurus", "qingxiusaurus"], dinosaurs
   end
 
@@ -70,16 +72,18 @@ class SelectTest < Minitest::Test
   end
 
   def test_pick_arrays
-    skip
     elements = ["CAT", ["dog"], 23, [56, 3, 8], "AIMLESS", 43, "butter"]
-    # Your code goes here
+    arrays = elements.find_all do |element|
+      element.class == Array
+    end
     assert_equal [["dog"], [56, 3, 8]], arrays
   end
 
   def test_pick_hashes
-    skip
     elements = ["cat", {:dog=>"fido"}, 23, {:stuff=>"things"}, "aimless", 43]
-    # Your code goes here
+    hashes = elements.select do |element|
+      element.class == Hash
+    end
     assert_equal [{:dog=>"fido"}, {:stuff=>"things"}], hashes
   end
 

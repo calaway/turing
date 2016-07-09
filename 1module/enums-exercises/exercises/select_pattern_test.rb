@@ -17,16 +17,17 @@ class SelectPatternTest < Minitest::Test
     numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     odds = []
     numbers.each do |number|
-      # Your code goes here
+      odds << number if number.odd?
     end
     assert_equal [1, 3, 5, 7, 9], odds
   end
 
   def test_pick_words_with_three_letters
-    skip
     words = ["pill", "bad", "finger", "cat", "blue", "dog", "table", "red"]
     selected = []
-    # Your code goes here
+    words.each do |word|
+      selected << word if word.length == 3
+    end
     assert_equal ["bad", "cat", "dog", "red"], selected
   end
 
@@ -73,16 +74,20 @@ class SelectPatternTest < Minitest::Test
   end
 
   def test_pick_arrays
-    skip
     elements = ["CAT", ["dog"], 23, [56, 3, 8], "AIMLESS", 43, "butter"]
-    # Your code goes here
+    arrays = []
+    elements.each do |element|
+      arrays << element if element.class == Array
+    end
     assert_equal [["dog"], [56, 3, 8]], arrays
   end
 
   def test_pick_hashes
-    skip
     elements = ["cat", {:dog=>"fido"}, 23, {:stuff=>"things"}, "aimless", 43]
-    # Your code goes here
+    hashes = []
+    elements.each do |element|
+      hashes << element if element.class == Hash
+    end
     assert_equal [{:dog=>"fido"}, {:stuff=>"things"}], hashes
   end
 
