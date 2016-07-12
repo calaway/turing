@@ -15,7 +15,7 @@ class SortByTest < Minitest::Test
   def test_sort_alphabetically_by_last_letter
     things = ["pill", "box", "glass", "water", "sponge"]
     sorted = things.sort_by do |thing|
-      # Your code goes here
+      thing[-1]# Your code goes here
     end
     assert_equal ["sponge", "pill", "water", "glass", "box"], sorted
   end
@@ -35,16 +35,18 @@ class SortByTest < Minitest::Test
   end
 
   def test_sort_by_proximity_to_ten
-    skip
     prices = [3.02, 9.91, 17.9, 10.01, 11.0]
-    # Your code goes here
+    sorted = prices.sort_by do |price|
+      (10 - price).abs
+    end# Your code goes here
     assert_equal [10.01, 9.91, 11.0, 3.02, 17.9], sorted
   end
 
   def test_sort_by_number_of_cents
-    skip
     prices = [3.02, 9.91, 7.9, 10.01, 11.0]
-    # Your code goes here
+    sorted = prices.sort_by do |price|
+      (price % 1)
+    end# Your code goes here
     assert_equal [11.0, 10.01, 3.02, 7.9, 9.91], sorted
   end
 

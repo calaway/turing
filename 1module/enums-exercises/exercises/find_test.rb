@@ -15,21 +15,24 @@ class FindTest < Minitest::Test
   def test_no_waldo
     words = ["scarf", "sandcastle", "flag", "pretzel", "crow", "key"]
     found = words.find do |word|
-      # Your code goes here
+      word == "waldo"
     end
     assert_equal nil, found
   end
 
   def test_find_waldo
-    skip
     words = ["noise", "dog", "fair", "house", "waldo", "bucket", "fish"]
-    # Your code goes here
+    found = words.find do |word|
+      word == "waldo"# Your code goes here
+    end
     assert_equal "waldo", found
   end
 
   def test_cannot_find_3_letter_words
-    skip
     words = ["piglet", "porridge", "bear", "blueberry"]
+    found = words.find do |word|
+      word.length == 3
+    end
     # Your code goes here
     assert_equal nil, found
   end
@@ -63,16 +66,18 @@ class FindTest < Minitest::Test
   end
 
   def test_find_first_word_ending_with_er
-    skip
     words = ["biggest", "pour", "blight", "finger", "pie", "border"]
-    # Your code goes here
+    found = words.find do |word|
+      word[-2..-1] == "er"# Your code goes
+    end
     assert_equal "finger", found
   end
 
   def test_find_first_number_greater_than_20
-    skip
     numbers = [1, 8, 19, 21, 29, 31, 34]
-    # Your code goes here
+    found = numbers.find do |num|
+      num > 20
+    end# Your code goes here
     assert_equal 21, found
   end
 

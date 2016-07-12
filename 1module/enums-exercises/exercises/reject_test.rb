@@ -15,7 +15,7 @@ class RejectTest < Minitest::Test
   def test_remove_vowels
     letters = ["a", "l", "l", " ", "y", "o", "u", "r", " ", "b", "a", "s", "e", " ", "a", "r", "e", " ", "b", "e", "l", "o", "n", "g", " ", "t", "o", " ", "u", "s"]
     remaining = letters.reject do |letter|
-      # Your code goes here
+      letter == "a" || letter == "e" || letter == "i" || letter == "o" || letter == "u" || letter == "y"# Your code goes here
     end
     assert_equal ["l", "l", " ", "r", " ", "b", "s", " ", "r", " ", "b", "l", "n", "g", " ", "t", " ", "s"], remaining
   end
@@ -63,9 +63,10 @@ class RejectTest < Minitest::Test
   end
 
   def test_remove_numbers
-    skip
     elements = ["cat", "dog", 23, 81.1, 56, "aimless", 43]
-    # Your code goes here
+    not_numbers = elements.delete_if do |element|
+      element.to_f == element
+    end# Your code goes here
     assert_equal ["cat", "dog", "aimless"], not_numbers
   end
 
@@ -91,16 +92,18 @@ class RejectTest < Minitest::Test
   end
 
   def test_remove_arrays
-    skip
     elements = ["CAT", ["dog"], 23, [56, 3, 8], "AIMLESS", 43, "butter"]
-    # Your code goes here
+    remaining = elements.delete_if do |element|
+      element.class == Array
+    end# Your code goes here
     assert_equal ["CAT", 23, "AIMLESS", 43, "butter"], remaining
   end
 
   def test_remove_hashes
-    skip
     elements = ["cat", {:dog=>"fido"}, 23, {:stuff=>"things"}, "aimless", 43]
-    # Your code goes here
+    remaining = elements.reject do |element|
+      element.class == Hash
+    end# Your code goes here
     assert_equal ["cat", 23, "aimless", 43], remaining
   end
 
