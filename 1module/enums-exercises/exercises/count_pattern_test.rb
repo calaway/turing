@@ -17,7 +17,7 @@ class CountPatternTest < Minitest::Test
     numbers = [9, 18, 12, 17, 1, 3, 99]
     tally = 0
     numbers.each do |number|
-      # Your code goes here
+      tally +=1 if number > 17# Your code goes here
     end
     assert_equal 2, tally
   end

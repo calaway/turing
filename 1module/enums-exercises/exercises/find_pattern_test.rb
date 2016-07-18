@@ -20,7 +20,10 @@ class FindPatternTest < Minitest::Test
     words = ["scarf", "sandcastle", "flag", "pretzel", "crow", "key"]
     found = nil
     words.each do |word|
-      # Your code goes here
+      if word == "waldo"
+        found = word
+        break
+      end# Your code goes here
     end
     assert_equal nil, found
   end
@@ -76,9 +79,14 @@ class FindPatternTest < Minitest::Test
   end
 
   def test_find_first_number_greater_than_20
-    skip
     numbers = [1, 8, 19, 21, 29, 31, 34]
-    # Your code goes here
+    found = numbers.first
+    numbers.each do |num|
+      if num > 20
+        found = num
+        break
+      end
+    end# Your code goes here
     assert_equal 21, found
   end
 
